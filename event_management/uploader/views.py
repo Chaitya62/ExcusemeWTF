@@ -86,7 +86,7 @@ def profile_view(request, id):
     print(dev_stars)
     print("Language Profiles: " + str(ProfileSingleton.languages_profile))
     badge_styles = {"Newbie": "badge-dark", "Beginner": "bage-secondary", "Advanced": "badge-success", "Expert": "badge-primary", "God": "badge-danger", "Unknown": "badge-light"}
-    return render(request, 'profile.html', {"user_name": profile.gDetails['name'], "cp_score": profile.cp_score, "dev_score": profile.dev_score, "badge": profile.badge, "repos": profile.gRepos, "languages": languages, "lang_data": lang_data, "cp_score_stars": cp_stars, "dev_score_stars": dev_stars, "cp_no_stars": "x" * (5 - len(cp_stars)), "dev_no_stars": "x" * (5 - len(dev_stars)), 'summary': profile.summary.items(), 'avatar_url': profile.gDetails['avatar_url'], "badge_style": badge_styles[profile.badge]})
+    return render(request, 'profile.html', {"user_name": profile.gDetails['name'], "cp_score": profile.cp_score, "dev_score": profile.dev_score, "badge": profile.badge, "repos": profile.gRepos, "languages": languages, "lang_data": lang_data, "cp_score_stars": cp_stars, "dev_score_stars": dev_stars, "cp_no_stars": "x" * (5 - len(cp_stars)), "dev_no_stars": "x" * (5 - len(dev_stars)), 'summary': profile.summary.items(), 'avatar_url': profile.gDetails['avatar_url'], "badge_style": badge_styles[profile.badge], 'mobile_number': profile.mNumber})
 
 
 def loader_view(request):

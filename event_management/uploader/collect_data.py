@@ -1,4 +1,4 @@
-from .resume_parser import convert_pdf_to_txt, get_codechef_username, get_linkedin_username, get_github_username, get_links
+from .resume_parser import convert_pdf_to_txt, get_codechef_username, get_linkedin_username, get_github_username, get_links, get_mobile_number
 from .githubapi import gitHubProfileAnalyzer
 from .codechefapi import get_data_by_username
 
@@ -16,16 +16,34 @@ class Profile:
 
     def __init__(self, resume_link):
         self.summary = dict()
+        self.success = True
         print("Calling pdf to text")
         self.content = str(convert_pdf_to_txt(resume_link).encode('ascii', 'ignore')).replace(r"\n", " ")
         print(self.content)
         self.githubUN = get_github_username(get_links(self.content, "github.com"))
+
+        if self.githubUN == "":
+            self.success = False
+            return
+
         self.linkedinUN = get_linkedin_username(get_links(self.content, "linkedin.com"))
         self.codechefUN = get_codechef_username(get_links(self.content, "codechef.com"))
 
         self.github = gitHubProfileAnalyzer(self.githubUN)
 
-        self.codechefData = get_data_by_username("https://codechef.com/users/" + self.codechefUN)
+        if self.codechefUN != "":
+
+            self.codechefData = get_data_by_username("https://codechef.com/users/" + self.codechefUN)
+            self.cp_score = self.calculate_cp()
+        else:
+
+            self.cp_score = 0
+
+        try:
+            self.mNumber = get_mobile_number(self.content)
+        except Exception as e:
+            print(e)
+            self.mNumber = "Mobile number not found"
 
         # obj.user_info()
         # obj.user_repos()
@@ -33,7 +51,7 @@ class Profile:
         self.gRepos = self.github.user_repos()
         self.gLanguages = self.github.user_languages()
         self.gDetails = self.github.user_info()
-        self.cp_score = self.calculate_cp()
+
         self.dev_score = self.calculate_dev()
         self.overall_score = 0.0
 

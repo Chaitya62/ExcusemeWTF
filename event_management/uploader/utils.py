@@ -19,7 +19,7 @@ def postpone(function):
 
 def get_remote_resume(link):
     output_file = "/home/jigar/Desktop/EventManagement/event_management/resumes/" + str(time()) + ".pdf"
-    system("wget -O '" + output_file + "' '" + link + "'")
+    system("wget -O " + output_file + " \"" + link + "\"")
     return output_file
 
 
@@ -40,7 +40,8 @@ def generate_profile_async(file):
         resume_summary = summarize(resume_path)
         print(resume_summary)
         profile = Profile(resume_path)
-        profile.id = i
+        if not profile.success:
+            continue
 
         for key, val in profile.gLanguages.items():
 
@@ -52,8 +53,10 @@ def generate_profile_async(file):
         print(ProfileSingleton.languages_profile)
         profile.summary = resume_summary
         ProfileSingleton.profiles.append(profile)
-        print(profile.gDetails)
-        print(profile.codechefData)
+        ProfileSingleton.profiles[-1].id = len(ProfileSingleton.profiles) - 1
+
+        # print(profile.gDetails)
+        # print(profile.codechefData)
     cp_min = 1e9
     cp_max = 0
     dev_min = 1e9

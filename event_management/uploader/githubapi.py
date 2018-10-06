@@ -4,7 +4,7 @@ import requests
 import time
 import math
 
-auth_sha = "7f08f033e16dc1e8363bc637c9b30f39e6cb46b8"
+auth_sha = "2de3535fc7b3198937e5fb926ae4f48996e90f91"
 
 
 class gitHubProfileAnalyzer:
