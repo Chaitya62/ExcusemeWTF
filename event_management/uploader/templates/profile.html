@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+  <!-- jQuery library -->
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <title>Document</title>
+
+
+
+
+<style>
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#slider {
+  position: absolute;
+  margin-left: 1%;
+  width: 95%;
+  height: 25%;
+  margin: auto;
+  border-radius: 5px;
+  background: #DDD;
+  overflow: hidden;
+}
+#slider .trigger {
+  cursor: pointer;
+  position: absolute;
+  width: 35px;
+  height: 50%;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  border: 0;
+  background: transparent;
+}
+#slider .trigger:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+#slider .trigger:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  border-style: solid;
+}
+#slider .first {
+  left: 0;
+  top: 0;
+}
+#slider .first:before {
+  left: 5px;
+  border-width: 3px 0 0 3px;
+  border-color: #333 transparent transparent #333;
+  box-shadow: inset 2px 2px #DDD, inset 5px 5px #333;
+  transform: rotate(-45deg);
+}
+#slider .last {
+  right: 0;
+  top: 0;
+}
+#slider .last:before {
+  right: 5px;
+  border-width: 0 3px 3px 0;
+  border-color: transparent #333 #333 transparent;
+  box-shadow: inset -2px -2px #DDD, inset -5px -5px #333;
+  transform: rotate(-45deg);
+}
+#slider .prev {
+  left: 0;
+  bottom: 0;
+}
+#slider .prev:before {
+  left: 5px;
+  border-width: 3px 0 0 3px;
+  border-color: #333 transparent transparent #333;
+  transform: rotate(-45deg);
+}
+#slider .next {
+  right: 0;
+  bottom: 0;
+}
+#slider .next:before {
+  right: 5px;
+  border-width: 3px 3px 0 0;
+  border-color: #333 #333 transparent transparent;
+  transform: rotate(45deg);
+}
+#slider .frame {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  right: 35px;
+  bottom: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  overflow: hidden;
+}
+#slider .frame .item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25%;
+  height: 100%;
+}
+#slider .frame .item .inset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 10px 5px;
+  overflow: hidden;
+}
+#slider .frame .item .inset .title {
+  margin: 10px 0;
+  font-weight: bold;
+  text-align: center;
+}
+#slider .frame .item .inset .caption {
+  margin: 10px;
+  font-size: 8pt;
+  text-align: justify;
+}
+
+/*.fix_card {
+  height: 100% !important;
+}*/
+
+
+</style>
+</head>
+<body>
+
+
+
+  <div id = "main_content">
+
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">Profile</a>
+      <form class="form-inline">
+
+      </form>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+
+          <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title">
+                    <img src="{{avatar_url}}" style="height:auto;   width:100%;"  alt=""  />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <br>
+              <h1>{{ user_name }}</h1>
+              <span class="badge {{badge_style}}">{{ badge }}</span>
+            </div>
+
+          </div>
+
+          <hr>
+          <div class="row">
+
+            <div class="container">
+              <center>
+                <canvas id="myChart"></canvas>
+              </center>
+            </div>
+
+          </div>
+
+
+
+        </div>
+        <div class="col-lg-1 col-md-1"></div>
+        <div class="col-lg-7 col-md-7">
+          <div class="rating-block">
+            <h2>Overall</h2>
+            <hr>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                  <h4>Competitive programming</h4>
+                  <h2 class="bold padding-bottom-7">{{ cp_score }} <small>/ 5</small></h2>
+                  {% for i in cp_score_stars %}
+                  <div  class="btn btn-warning btn-sm" aria-label="Left Align">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  {% endfor %}
+
+                  <!-- <div  class="btn btn-warning btn-sm" aria-label="Left Align">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div> -->
+                  {% for i in cp_no_stars %}
+                  <div  class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  {% endfor %}
+                </div>
+
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                  <h4>Development</h4>
+                  <h2 class="bold padding-bottom-7"> {{ dev_score }} <small>/ 5</small></h2>
+                  {% for i in dev_score_stars %}
+                  <div  class="btn btn-warning btn-sm" aria-label="Left Align">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  {% endfor %}
+
+                  <!-- <div  class="btn btn-warning btn-sm" aria-label="Left Align">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div> -->
+                  {% for i in dev_no_stars %}
+                  <div  class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  {% endfor %}
+                </div>
+
+                </div>
+              </div>
+
+            </div>
+
+
+            <br><br>
+
+
+              <h2>Projects</h2>
+              <hr>
+
+            <div class="row" style="max-height:55vh;overflow:scroll;margin:10px;">
+              <!-- <main id='slider'>
+  <button class='trigger first'></button>
+  <button class='trigger last'></button>
+  <button class='trigger prev'></button>
+  <button class='trigger next'></button>
+  <section class='frame'> -->
+
+
+    {% for repo in repos %}
+
+
+
+        <div class="card col-lg-5">
+          <div class="card-body">
+            <h5 class="card-title" style = "max-width: 100%; text-overflow: ellipsis;"><span style = "white-space: nowrap; overflow: ellipsis;">{{repo.name}}</span></h5>
+            <p class="card-text">Language: {{repo.language}}</p>
+            <p>
+              <i class="fa fa-star" aria-hidden="true">&nbsp;{{repo.stars}}</i>
+              &emsp;<i class="fa fa-code-fork" aria-hidden="true">&nbsp;{{repo.forks}}</i>
+            </p>
+            <a href="{{repo.url}}" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+    {% endfor %}
+  <!-- </section>
+</main> -->
+
+
+            </div>
+
+
+
+        </div>
+
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <hr>
+
+    <h2>Resume summary</h2>
+            <hr>
+
+            <div class="container">
+            <div class="row">
+
+              <table class="table" style="border:1px solid lightgrey">
+                <thead>
+                  <th>Field</th>
+                  <th>Value</th>
+                </thead>
+
+                <tbody>
+                   {% for i,j in summary %}
+                      <tr>
+                        <td>{{i}}</td> : <td>{{j}}</td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+
+              </table>
+
+
+            </div>
+
+          </div>
+
+
+
+</div>
+
+<script>
+
+window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+
+
+var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+
+var data = [{% for value in lang_data %}
+  {{value}},
+{% endfor %}]
+
+var language_labels = [{% for label in languages %}
+  '{{label}}',
+{% endfor %}]
+
+var config = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: data,
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+            'rgb(41, 128, 185)',
+            'rgb(230, 126, 34)',
+            'rgb(155, 89, 182)',
+            'rgb(142, 68, 173)',
+            'rgb(243, 156, 18)',
+            'rgb(22, 160, 133)',
+            'rgb(211, 84, 0)'
+					],
+					label: 'Dataset 1',
+				}],
+				labels: language_labels,
+			},
+			options: {
+				responsive: false
+			}
+		};
+
+
+
+
+window.onload = function() {
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+    window.myPie = new Chart(ctx, config);
+  };
+
+  var colorNames = Object.keys(window.chartColors);
+  // document.getElementById('addDataset').addEventListener('click', function() {
+  //   var newDataset = {
+  //     backgroundColor: [],
+  //     data: [],
+  //     label: 'New dataset ' + config.data.datasets.length,
+  //   };
+  //   for (var index = 0; index < config.data.labels.length; ++index) {
+  //     newDataset.data.push(randomScalingFactor());
+  //     var colorName = colorNames[index % colorNames.length];
+  //     var newColor = window.chartColors[colorName];
+  //     newDataset.backgroundColor.push(newColor);
+  //   }
+  //   config.data.datasets.push(newDataset);
+  //   window.myPie.update();
+  // });
+  // document.getElementById('removeDataset').addEventListener('click', function() {
+  //   config.data.datasets.splice(0, 1);
+  //   window.myPie.update();
+  // });
+
+
+
+</script>
+
+
+
+<script>
+
+$('#slider .item').each(function(i){
+  var $this = $(this),
+      width = $this.width(),
+      left = width * i,
+      color = 25 * i;
+  $this.css({ left: left })
+  .find('.inset').css({ backgroundColor: 'hsl(' + color + ',65%,50%)' });
+});
+$('#slider .item .inset').each(function(){
+  var $this = $(this),
+      color = $this.css('backgroundColor');
+  $this.append('<div class="shadow"></div>');
+  $this.find('.shadow').css({
+    position: 'absolute',
+    left: 0, right: 0, bottom: 0,
+    'box-shadow': '0 0 25px 25px ' + color
+  });
+});
+$('.trigger').on('click',function(){
+  var $this = $(this),
+      width = $('.item').width() * 4,
+      speed = 500;
+  if ( $this.hasClass('first') ) {
+    $('.frame').animate({ scrollLeft: 0 },speed * 3);
+  } else if ( $this.hasClass('last') ) {
+    $('.frame').animate({ scrollLeft: $('.frame')[0].scrollWidth },speed * 3);
+  } else if ( $this.hasClass('prev') ) {
+    $('.frame').animate({ scrollLeft: '-=' + width },speed);
+  } else if ( $this.hasClass('next') ) {
+    $('.frame').animate({ scrollLeft: '+=' + width },speed);
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{% static 'css/dragAndDrop.css' %}">
+	<title>Drag And Drop</title>
+</head>
+<body>
+<div id="dnd">
+  <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="dnd-container">
+      <div class="start"></div>
+      <div class="done"></div>
+      <div class="error"></div>
+      <progress max="100" value="50"></progress>
+    </div>
+    <p>Upload here</p>
+    <button class="dndAlternative">Browse</button>
+    <input type="file" name="upload" >
+  </form>
+</div>
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/dragAndDrop.js' %}"></script>
+</body>
+</html>
