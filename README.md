@@ -25,21 +25,60 @@ Tedious job of screening process for any event. We provide a solution where even
 
 ### Features
 
-- Upload excel workbook containing resume and other metadata (excel can generated from google form filled by different applicants) 
+- Upload excel workbook containing resume and other metadata (excel can generated from google form filled by different applicants)
 - Summarize resume of any format.
 - Rate candidates according our unique algorithm based on 2 parameters viz.
   * Competitive Programming (problems solved, correct answers, ratings etc.)
   * Open Source Development (commits,stars , followers, repository, years of experience etc.)
-- Visualization of different repository and different repository. 
-- Search for the candidate based on above parameters and also languages they have worked on in their open source development. 
+- Visualization of different repository and different repository.
+- Search for the candidate based on above parameters and also languages they have worked on in their open source development.
+
+
+###  Screenshots
+
+
+
 
 <div align="center">
 
 <h3 > Web-App  </h3>
 <br>
+
+
 <p align="center">
-<img src ="#" width = 500px>
+  <a href="" rel="noopener">
+ <img width="100%" src="./event_management/screenshots/upload.png"></a>
 </p>
+
+
+
+<p align="center">
+  <a href="" rel="noopener">
+ <img width="100%" src="./event_management/screenshots/search.png"></a>
+</p>
+
+
+
+<p align="center">
+  <a href="" rel="noopener">
+ <img width="100%" src="./event_management/screenshots/Filter.png"></a>
+</p>
+
+
+<p align="center">
+  <a href="" rel="noopener">
+ <img width="100%" src="./event_management/screenshots/Profile.png"></a>
+</p>
+
+
+<p align="center">
+  <a href="" rel="noopener">
+ <img width="100%" src="./event_management/screenshots/Summary.png"></a>
+</p>
+
+
+
+
 </div>
 ---
 
@@ -49,7 +88,7 @@ Tedious job of screening process for any event. We provide a solution where even
 
 ```sh
         $ git clone https://github.com/Chaitya62/ExcusemeWTF.git
-        $ cd event_management 
+        $ cd event_management
         $ pip3 install -r requirements.txt
 ```
 
@@ -68,5 +107,5 @@ Tedious job of screening process for any event. We provide a solution where even
 - [@JigarWala](https://github.com/JigarWala)
 
 
-### References 
+### References
 Image taken from [here](http://www.clipartpanda.com/clipart_images/clip-art-of-a-monster-eating-8838031)
