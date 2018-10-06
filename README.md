@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=300px src="#"></a>
+ <img width=300px src="./bureau-clipart-image002.gif"></a>
 </p>
 
 <h3 align="center">ResCrunch</h3>
@@ -66,3 +66,7 @@ Tedious job of screening process for any event. We provide a solution where even
 - [@Chaitya62](https://github.com/chaitya62)
 - [@Ankit-22](https://github.com/Ankit-22)
 - [@JigarWala](https://github.com/JigarWala)
+
+
+### References 
+Image taken from [here](http://www.clipartpanda.com/clipart_images/clip-art-of-a-monster-eating-8838031)
