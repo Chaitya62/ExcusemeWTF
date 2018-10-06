@@ -3,7 +3,7 @@
  <img width=300px src="#"></a>
 </p>
 
-<h3 align="center">Resume Cruncher</h3>
+<h3 align="center">ResCrunch</h3>
 
 <div align="center">
 
