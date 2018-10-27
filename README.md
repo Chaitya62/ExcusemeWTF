@@ -25,7 +25,7 @@ Tedious job of screening process for any event. We provide a solution where even
 
 ### Recognition
 
- Top 15 projects [@KJSCEHackaton](http://hack.kjscecodecell.com/)
+ Top 15 projects [@KJSCEHackathon](http://hack.kjscecodecell.com/)
 
 
 
