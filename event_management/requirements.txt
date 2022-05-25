@@ -15,7 +15,7 @@ MarkupSafe==1.0
 pdfminer.six==20170720
 pycryptodome==3.6.6
 PyGithub==1.43.2
-PyJWT==1.6.4
+PyJWT==2.4.0
 requests==2.19.1
 six==1.11.0
 SQLAlchemy==1.0.8
